@@ -27,7 +27,7 @@
             </li>
           </ul>
         </div>
-        <div v-if="!discList.length">
+        <div v-show="!discList.length">
           <Loading class="loading-container"/>
         </div>
       </div>   
@@ -43,6 +43,7 @@
   import Loading from '@/base/loading'
 
   export default {
+    name: 'recommend',
     components: {
       Slider,
       Scroll,
@@ -75,7 +76,9 @@
           if (res.code === ERR_OK) {
             this.discList = res.data.list
           }
-        } catch (e) {}
+        } catch (e) {
+          console.log(e)
+        }
       },
       loadImage () {
         if (!this.checkLoaded) {

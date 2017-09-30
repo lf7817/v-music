@@ -19,20 +19,23 @@ export default {}
   .m-header
     position relative
     height 44px
+    line-height 44px
     text-align center
     color $color-theme    
     font-size 0
     .icon
       display inline-block
-      width 30px
-      height 32px
+      margin-top 4px
+      width 28px
+      height 30px
       bg-image('logo')
       vertical-align top
-      background-size 30px 32px
+      background-size 28px 30px
     .text
       display inline-block
       vertical-align top
       line-height 44px
+      text-indent 8px
       font-size $font-size-large      
     .mine
       position absolute

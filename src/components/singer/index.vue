@@ -1,5 +1,5 @@
 <template>
-  <div class="singer" v-if="singers.length">
+  <div class="singer">
     <list-view :data="singers"></list-view>
   </div>
 </template>
@@ -14,6 +14,7 @@ const HOT_NAME = '热门'
 const HOT_SEARCH_NUM = 10
 
 export default {
+  name: 'singer',
   components: {
     ListView
   },

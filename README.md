@@ -1,6 +1,6 @@
-# v
+# Chicken Music
 
-> A Vue.js project
+> 炸鸡音乐（来自慕课网课程）
 
 ## Build Setup
 
@@ -18,4 +18,5 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 技术栈
+vue全家桶
