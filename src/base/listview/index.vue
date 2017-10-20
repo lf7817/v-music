@@ -9,7 +9,10 @@
       <li v-for="(item, index) in data" :key="index" class="list-group" ref="listGroup">
         <h2 class="title">{{item.title}}</h2>
         <ul>
-          <li v-for="(list, i) in item.items" :key="i" class="list-group-item">
+          <li v-for="(list, i) in item.items" 
+            :key="i" 
+            class="list-group-item" 
+            @click="selectItem(list)">
             <img v-lazy="list.avatar" class="avatar">
             <span class="name">{{list.name}}</span>
           </li>
@@ -88,6 +91,9 @@ export default {
     this.listHeight = []
   },
   methods: {
+    selectItem (item) {
+      this.$emit('select', item)
+    },
     onShortCutStart (e) {
       const anchorIndex = getData(e.target, 'index')
       if (!anchorIndex) return
