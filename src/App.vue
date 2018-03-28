@@ -2,28 +2,23 @@
   <div id="app">
     <m-header />
     <tab />
-    <keep-alive>
-      <router-view />
-    </keep-alive>
-    <player />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MHeader from '@/components/m-header'
-import Tab from '@/components/tab'
-import Player from '@/components/Player'
+import MHeader from './components/m-header'
+import Tab from './components/tab'
 
 export default {
   name: 'app',
   components: {
     MHeader,
-    Tab,
-    Player
+    Tab
   }
 }
 </script>
 
-<style>
-
+<style lang="stylus">
+  @import "~@/assets/stylus/variable.styl"
 </style>
