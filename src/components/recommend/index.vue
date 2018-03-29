@@ -52,4 +52,7 @@ export default {
     width 100%
     top 88px
     bottom 0
+    .slider-wrapper
+      width 100%
+      overflow hidden
 </style>

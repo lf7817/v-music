@@ -2,16 +2,19 @@
   "name": "vmusic",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lf7817.github.io/v-music",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages -d dist "
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "better-scroll": "^1.9.1",
     "fastclick": "^1.0.6",
+    "gh-pages": "^1.1.0",
     "jsonp": "^0.2.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
