@@ -25,6 +25,7 @@
             </li>
           </ul>
         </div>
+        <loading v-show="!discList.length"></loading>
       </div>
     </Scroll>
   </div>
@@ -35,11 +36,13 @@ import { getRecommend, getDiscList } from '@/api/recommend'
 import { ERR_OK } from '@/constant'
 import Slider from '@/base/slider'
 import Scroll from '@/base/scroll'
+import Loading from '@/base/loading'
 
 export default {
   components: {
     Slider,
-    Scroll
+    Scroll,
+    Loading
   },
   data () {
     return {
@@ -129,4 +132,13 @@ export default {
               color: $color-text
             .desc
               color: $color-text-d
+    .loading-container
+      position: absolute
+      width: 100%
+      top: 50%
+      transform: translateY(-50%)
+
+
+
+
 </style>
