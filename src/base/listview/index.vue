@@ -5,9 +5,9 @@
     listenScroll
     :probeType="3"
     @scroll="scrollHandler" 
-    :data="data">
+    :data="list">
     <ul ref="group">
-      <li v-for="group in data" class="list-group" :key="group.title" >
+      <li v-for="group in list" class="list-group" :key="group.title" >
         <h2 class="list-group-title">{{group.title}}</h2>
         <ul>
           <li v-for="item in group.items" class="list-group-item" :key="item.id">
@@ -30,22 +30,34 @@
         {{item}}
       </li>
     </ul>
+    <div 
+      class="fixed-title"
+      v-show="fixedTitle"
+      :style="{'transform': `translate3d(0, ${offsetY}px, 0)`}">
+      {{fixedTitle}}
+    </div>
+    <div class="loading-container" v-show="!list.length">
+      <Loading />
+    </div>
   </scroll>
 </template>
 
 <script>
 import Scroll from '../scroll'
+import Loading from '../loading'
 import { getData } from '@/common/dom'
 
 const ANCHOR_HEIGHT = 18
+const TITLE_HEIGHT = 30
 
 export default {
   name: 'list-view',
   components: {
-    Scroll
+    Scroll,
+    Loading
   },
   props: {
-    data: {
+    list: {
       type: Array,
       default: []
     }
@@ -53,14 +65,22 @@ export default {
   data () {
     return {
       currentIndex: 0,
-      scrollY: -1
+      scrollY: -1,
+      diff: -1,
+      offsetY: 0
     }
   },
   computed: {
     shortcutList () {
-      return this.data.map(group => {
+      return this.list.map(group => {
         return group.title.charAt(0)
       })
+    },
+    fixedTitle () {
+      if (this.scrollY > 0) {
+        return ''
+      }
+      return this.list[this.currentIndex] ? this.list[this.currentIndex].title : ''
     }
   },
   created (){
@@ -107,7 +127,7 @@ export default {
     }
   },
   watch: {
-    data () {
+    list () {
       this.$nextTick(() => {
         this._calculateHeight()
       })
@@ -121,7 +141,7 @@ export default {
       for (let i = 0; i < this.listHeight.length - 1; i++) {
         const h1 = this.listHeight[i]
         const h2 = this.listHeight[i + 1]
-
+        this.diff = h2 + newY - TITLE_HEIGHT
         if (-newY >= h1 && -newY < h2) {
           this.currentIndex = i
           return
@@ -129,6 +149,13 @@ export default {
       }
 
       this.currentIndex = this.listHeight.length - 2
+    },
+    diff (newDiff) {
+      if (newDiff < 0) {
+        this.offsetY = newDiff
+      } else {
+        this.offsetY = 0
+      }
     }
   }
 }
@@ -181,5 +208,18 @@ export default {
         color: $color-text-l
         &.active
           color $color-theme
+    .fixed-title
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 30px
+      line-height 30px
+      padding-left 20px
+      font-size $font-size-small
+      color $color-text-l
+      background $color-highlight-background
+    .loading-container
+      margin-top 40px
 
 </style>

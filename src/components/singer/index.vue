@@ -1,6 +1,6 @@
 <template>
   <div class="singer" ref="singer">
-    <ListView :data="singers"/>
+    <ListView :list="singers"/>
   </div>
 </template>
 
