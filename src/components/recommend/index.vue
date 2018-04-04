@@ -39,6 +39,7 @@ import Scroll from '@/base/scroll'
 import Loading from '@/base/loading'
 
 export default {
+  name: 'recommend',
   components: {
     Slider,
     Scroll,

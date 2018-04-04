@@ -12,3 +12,17 @@ export const addClass = (el, className) => {
   newClass.push(className)
   el.className = newClass.join(' ')
 }
+
+
+export const getData = (el, name) => {
+  const prefix = 'data-'
+  name = prefix + name
+  return el.getAttribute(name)
+}
+
+export const setData = (el, name, val) => {
+  const prefix = 'data-'
+  name += prefix + name
+
+  return el.setAttribute(name, val)
+}

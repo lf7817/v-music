@@ -12,7 +12,7 @@ const data2param = (data) => {
 }
 
 const jsonp = (url, data, option) => {
-  url += (url.indexOf('?') < 0) ? '?' : '&' + data2param(data)
+  url += ((url.indexOf('?') < 0) ? '?' : '&') + data2param(data)
   
   return new Promise((resolve, reject) => {
     originJSONP(url, option, (err, data) => {
