@@ -5,8 +5,7 @@
       class="tab-item"
       v-for="(nav, index) in navs"
       :key="index"
-      :to="nav.path"
-      :data-index="index">
+      :to="nav.path">
       <span class="tab-link">{{nav.title}}</span>
     </router-link>
     <div class="tab-under-line" :style="{transform: `translate3d(${offsetX}px, 0, 0)`}"></div>   
@@ -14,7 +13,7 @@
 </template>
 
 <script>
-import { getData, hasClass } from '@/common/dom'
+import { hasClass } from '@/common/dom'
 
 const UNDER_LINE_WIDTH = 28
 
@@ -49,7 +48,7 @@ export default {
     }
   },
   watch: {
-    '$route' (to, from) {
+    '$route' (to) {
       this.setPosition(to.path)
     }
   },

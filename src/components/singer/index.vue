@@ -1,6 +1,7 @@
 <template>
   <div class="singer" ref="singer">
-    <ListView :list="singers"/>
+    <ListView :list="singers" @select="selectSinger"/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -27,6 +28,11 @@ export default {
     this._getSingerList()
   },
   methods: {
+    selectSinger (singer) {
+      this.$router.push({
+        path: `/singer/${singer.id}`
+      })
+    },
     async _getSingerList () {
       try {
         const res = await getSingerList()
