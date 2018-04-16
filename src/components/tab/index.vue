@@ -50,12 +50,7 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      for (let i = 0; i < this.navs.length; i++) {
-        if (to.path.indexOf(this.navs[i].path) >= 0) {
-          this.anchorIndex = i
-          return
-        }
-      }
+      this.setPosition(to.path)
     }
   },
   mounted () {
@@ -72,8 +67,13 @@ export default {
         this.anchors.push((itemWidth - UNDER_LINE_WIDTH) / 2 + itemWidth * i)
       }
     },
-    setPosition (e) {
-      
+    setPosition (path) {
+      for (let i = 0; i < this.navs.length; i++) {
+        if (path.indexOf(this.navs[i].path) >= 0) {
+          this.anchorIndex = i
+          return
+        }
+      }
     },
     initPosition () {
       for (let i = 0; i < this.len; i++) {
