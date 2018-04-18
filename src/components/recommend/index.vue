@@ -56,6 +56,7 @@ export default {
     setTimeout(() => {
       this._getDiscList()
     }, 500)
+    this.$store.commit('SET_A', 10)
   },
   methods: {
     async _getRecommend () {

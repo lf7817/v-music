@@ -1,0 +1,1 @@
+export const getA = state => state.a
