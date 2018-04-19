@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import { getSingerList } from '@/api/singer'
 import { ERR_OK } from '@/constant'
 import Singer from '@/common/singer'
@@ -29,6 +30,7 @@ export default {
   },
   methods: {
     selectSinger (singer) {
+      this.setSinger(singer)
       this.$router.push({
         path: `/singer/${singer.id}`
       })
@@ -88,7 +90,10 @@ export default {
       })
 
       return hot.concat(ret)
-    }
+    },
+    ...mapMutations({
+      setSinger: 'SET_SINGER'
+    })
   }
 }
 </script>

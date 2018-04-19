@@ -13,3 +13,5 @@ export const ERR_OK = 0
 export const API_RECOMMEND_ADDRESS = 'http://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'
 // 歌手地址
 export const API_SINGER_ADDRESS = 'http://c.y.qq.com/v8/fcg-bin/v8.fcg'
+// 歌手详情地址
+export const API_SINGER_DETAIL_ADDRESS = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg'

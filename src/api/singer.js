@@ -1,6 +1,6 @@
 import Jsonp from '../common/jsonp'
 import { commonParams, options } from './config'
-import { API_SINGER_ADDRESS } from '../constant'
+import { API_SINGER_ADDRESS, API_SINGER_DETAIL_ADDRESS } from '../constant'
 
 export const getSingerList = () => {
   const data = {
@@ -16,4 +16,18 @@ export const getSingerList = () => {
   }
 
   return Jsonp(API_SINGER_ADDRESS, data, options)
+}
+
+export const getSingerDetail = singerId => {
+  const data = {
+    ...commonParams,
+    needNewCode: 0,
+    platform: 'yqq',
+    order: 'listen',
+    begin: 0,
+    num: 80,
+    songstatus: 1,
+    singermid: singerId
+  }
+  return Jsonp(API_SINGER_DETAIL_ADDRESS, data, options)
 }

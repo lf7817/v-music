@@ -1,5 +1,5 @@
 const state = {
-  a: 1
+  singer: {}
 }
 
 export default state

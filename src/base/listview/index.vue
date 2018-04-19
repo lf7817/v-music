@@ -121,7 +121,7 @@ export default {
       } else if (anchorIndex > this.listHeight.length - 2) {
         anchorIndex = this.listHeight.length - 2
       }
-      this.currentIndex = anchorIndex
+      this.currentIndex = parseInt(anchorIndex)
       this.$refs.scroll.scrollToElement(this.$refs.group.children[anchorIndex], 0)
     },
     _calculateHeight () {
